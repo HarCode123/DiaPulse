@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>DiaPulse</h1>
+    <p>Diabetes Monitoring Portal & AI Clinical Decision Support System</p>
+</header>
+
+<nav>
+    <button onclick="showDoctorProfile()">Doctor Profile</button>
+    <button onclick="showPatientList()">Patient List</button>
+</nav>
+
+
+<!-- Doctor Profile Card -->
+<section class="card">
+    <h2>Doctor Profile</h2>
+
+    <input value="Dr. Rajesh Kumar" disabled>
+    <input value="Endocrinologist" disabled>
+    <input value="Diabetes Specialist" disabled>
+</section>
+<!-- Patient List Section -->
+<section id="patientListSection" class="card hidden">
+    <h2>Patient List</h2>
+
+    <table class="doctor-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Blood Group</th>
+                <th>Diabetes Type</th>
+                <th>Reports</th>
+            </tr>
+        </thead>
+        <tbody id="patientListTable">
+            <!-- JS inserts rows -->
+        </tbody>
+    </table>
+</section>
+
+<!-- Patient Table Card -->
+<section class="card">
+    <h2>Assigned Patients</h2>
+
+    <table class="doctor-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Blood Group</th>
+                <th>Diabetes Type</th>
+                <th>Reports</th>
+            </tr>
+        </thead>
+
+        <tbody id="patientTable">
+            <!-- JS inserts rows -->
+        </tbody>
+    </table>
+</section>
+
+<script src="docjava.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+/* ===== GLOBAL ===== */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f4f1fb, #efe9fb);
+    margin: 0;
+    color: #333;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(135deg, #7b5cff, #9d7bff);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ===== NAV ===== */
+nav {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+nav button {
+    margin: 0 8px;
+    padding: 10px 22px;
+    border: none;
+    background: #7b5cff;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+nav button:hover {
+    background: #6248d9;
+    transform: translateY(-1px);
+}
+
+/* ===== CARDS ===== */
+.card {
+    background: #ffffff;
+    margin: 30px auto;
+    padding: 25px;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(123,92,255,0.12);
+}
+
+/* ===== FORM ELEMENTS ===== */
+input, select {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #7b5cff;
+}
+
+/* ===== BUTTONS INSIDE SECTIONS ===== */
+section button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #7b5cff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+section button:hover {
+    background: #6248d9;
+    transform: translateY(-1px);
+}
+
+/* ===== STATUS BOXES ===== */
+.status {
+    padding: 14px 18px;
+    margin: 12px 0;
+    border-radius: 15px;
+    background: #f3efff;
+    border-left: 5px solid #7b5cff;
+    font-size: 14px;
+}
+
+/* ===== CHART ===== */
+canvas {
+    margin-top: 20px;
+}
+
+/* ===== HIDDEN ===== */
+.hidden {
+    display: none;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #ffffff;
+    font-size: 13px;
+    color: #555;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+}
+

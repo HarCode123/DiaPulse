@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Integrated Diabetes Monitoring Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+
+</head>
+<body>
+
+<header>
+    <h1>DiaPulse</h1>
+    <p>Diabetes Monitoring Portal & AI Clinical Decision Support System</p>
+</header>
+
+<nav>
+    <button onclick="showSection('profile')">Patient Profile</button>
+    <button onclick="showSection('upload')">Upload Reports</button>
+    <button onclick="showSection('analysis')">AI Analysis</button>
+</nav>
+
+<section id="profile" class="card">
+     <h2>Patient Profile</h2>
+    <input placeholder="Name">
+    <input placeholder="Age" type="number">
+    <select>
+        <option>Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+    <input placeholder="Blood Group">
+    <input placeholder="Diabetes Type">
+</section>
+
+
+<section id="upload" class="card hidden">
+    <h2>Upload Lab Report</h2>
+
+    <input type="file" id="reportUpload" accept="image/*,.pdf">
+    <button onclick="runOCR()">Extract Values (OCR)</button>
+
+    <p id="ocrStatus"></p>
+
+    <h3>Extracted / Manual Entry</h3>
+    <input id="fasting" placeholder="Fasting Glucose (mg/dL)">
+    <input id="ppbg" placeholder="Post-Prandial (mg/dL)">
+    <input id="hba1c" placeholder="HbA1c (%)">
+
+    <button onclick="analyzeData()">Analyze</button>
+</section>
+
+
+<section id="analysis" class="card hidden">
+    <h2>AI Diagnosis & Decision</h2>
+
+    <div id="diagnosis" class="status"></div>
+    <div id="riskScore" class="status"></div>
+    <div id="decision" class="status"></div>
+
+    <canvas id="trendChart"></canvas>
+</section>
+
+<footer>
+    <p>⚕️ Clinical decision support only. Consult physician for treatment.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    const role = localStorage.getItem("userRole");
+    const user = localStorage.getItem("loggedInUser");
+
+    document.getElementById("welcome").innerText =
+        `Welcome ${role.toUpperCase()} : ${user}`;
+
+    if (role === "doctor") {
+        document.getElementById("doctorPanel").classList.remove("hidden");
+    }
+
+    if (role === "patient") {
+        document.getElementById("patientPanel").classList.remove("hidden");
+    }
+</script>
+
+</body>
+</html>

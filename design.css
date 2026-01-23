@@ -1,0 +1,246 @@
+/* ===== LOGIN PAGE BASE ===== */
+body.centered {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f4f1fb, #efe9fb);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== LOGIN CARD ===== */
+.login-box {
+    background: #ffffff;
+    width: 360px;
+    padding: 30px 28px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(123, 92, 255, 0.15);
+    text-align: center;
+}
+
+/* ===== TITLE ===== */
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #7b5cff;
+    font-weight: 600;
+}
+
+/* ===== INPUTS & SELECT ===== */
+.login-box input,
+.login-box select {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: border 0.3s ease;
+}
+
+.login-box input:focus,
+.login-box select:focus {
+    outline: none;
+    border-color: #7b5cff;
+}
+
+/* ===== LOGIN BUTTON ===== */
+.login-box button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: #7b5cff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.login-box button:hover {
+    background: #6248d9;
+    transform: translateY(-1px);
+}
+
+/* ===== ERROR MESSAGE ===== */
+#loginError {
+    margin-top: 12px;
+    font-size: 13px;
+    color: red;
+}
+body.centered {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f4f1fb, #efe9fb);
+    margin: 0;
+    padding: 40px;
+}
+
+.doctor-box {
+    background: white;
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(123, 92, 255, 0.15);
+}
+
+.doctor-box h2 {
+    margin-top: 0;
+    color: #4b3cc4;
+}
+
+.doctor-name {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+thead {
+    background: #7b5cff;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+tr:hover {
+    background: #f6f4ff;
+}
+
+.upload-link {
+    text-decoration: none;
+    background: #7b5cff;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.upload-link:hover {
+    background: #6248d9;
+}
+
+/* ===== DOCTOR TABLE ===== */
+.doctor-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.doctor-table thead {
+    background: #7b5cff;
+    color: white;
+}
+
+.doctor-table th,
+.doctor-table td {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.doctor-table tr:hover {
+    background: #f6f4ff;
+}
+
+.doctor-table a {
+    background: #7b5cff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.doctor-table a:hover {
+    background: #6248d9;
+}
+
+/* ===== PATIENT TABLE SIZE FIX (SAFE OVERRIDE) ===== */
+.doctor-table {
+    width: 100%;
+    table-layout: fixed; /* forces proper column sizing */
+}
+
+/* Column width distribution */
+.doctor-table th:nth-child(1),
+.doctor-table td:nth-child(1) {
+    width: 20%; /* Name */
+}
+
+.doctor-table th:nth-child(2),
+.doctor-table td:nth-child(2) {
+    width: 8%; /* Age */
+}
+
+.doctor-table th:nth-child(3),
+.doctor-table td:nth-child(3) {
+    width: 12%; /* Gender */
+}
+
+.doctor-table th:nth-child(4),
+.doctor-table td:nth-child(4) {
+    width: 15%; /* Blood Group */
+}
+
+.doctor-table th:nth-child(5),
+.doctor-table td:nth-child(5) {
+    width: 20%; /* Diabetes Type */
+}
+
+.doctor-table th:nth-child(6),
+.doctor-table td:nth-child(6) {
+    width: 15%; /* Reports */
+}
+
+/* Prevent text overflow issues */
+.doctor-table th,
+.doctor-table td {
+    white-space: nowrap;
+}
+/* ===== FIX FLEX SHRINK ISSUE FOR DOCTOR PAGE ===== */
+.doctor-page {
+    width: 100%;
+    max-width: 1200px; /* allows wide table */
+}
+
+/* Ensure table can expand fully */
+.doctor-page .doctor-table {
+    width: 100%;
+    table-layout: auto; /* override flex shrink */
+}
+
+/* Allow text to breathe */
+.doctor-page th,
+.doctor-page td {
+    white-space: normal;
+}
+/* ===== TABLE GRID LINES FOR BETTER READABILITY ===== */
+.doctor-table {
+    border: 2px solid #7b5cff;
+}
+
+.doctor-table th,
+.doctor-table td {
+    border: 1px solid #dcd6ff;
+}
+
+.doctor-table thead th {
+    border-bottom: 2px solid #7b5cff;
+}
+
+.doctor-table tbody tr:last-child td {
+    border-bottom: 0;
+}

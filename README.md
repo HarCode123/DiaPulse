@@ -34,3 +34,7 @@ A full-stack healthcare web application designed to support **early diabetes dia
 ## 🎯 Project Impact
 
 **DIAPLUSE** aims to improve non-communicable disease care by enabling systematic diabetes screening, reducing diagnostic delays, strengthening treatment adherence, and providing clinicians with validated longitudinal patient data for evidence-based decision making.
+
+## Link for the project:
+https://harcode123.github.io/DiaPulse/
+

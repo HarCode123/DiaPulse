@@ -1,4 +1,4 @@
-# 🩺 GENESIS
+# 🩺 DIAPULSE
 
 ### Integrated Digital Platform for Diabetes Diagnosis & Monitoring
 
@@ -24,8 +24,8 @@ A full-stack healthcare web application designed to support **early diabetes dia
 | **Layer** | **Technologies** |
 |------------|------------------|
 | Frontend | React, HTML, CSS, JavaScript |
-| Backend | Node.js / Django |
-| Database | MySQL / PostgreSQL |
+| Backend | Node.js / Django |----TO BE WORKED ON
+| Database | MySQL / PostgreSQL |---TO BE WORKED ON
 | APIs | REST API |
 | AI Logic | Rule-based diagnostic engine (ML-ready architecture) |
 
@@ -33,4 +33,4 @@ A full-stack healthcare web application designed to support **early diabetes dia
 
 ## 🎯 Project Impact
 
-GENESIS aims to improve non-communicable disease care by enabling systematic diabetes screening, reducing diagnostic delays, strengthening treatment adherence, and providing clinicians with validated longitudinal patient data for evidence-based decision making.
+**DIAPLUSE** aims to improve non-communicable disease care by enabling systematic diabetes screening, reducing diagnostic delays, strengthening treatment adherence, and providing clinicians with validated longitudinal patient data for evidence-based decision making.

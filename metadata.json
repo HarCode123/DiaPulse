@@ -1,0 +1,6 @@
+{
+  "name": "DiaPulse",
+  "description": "Integrated digital platform for diabetes diagnosis, OCR lab report extraction, and glucose monitoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

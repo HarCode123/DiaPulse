@@ -1,0 +1,16 @@
+{
+  "name": "diapulse",
+  "version": "1.0.0",
+  "description": "Integrated Digital Platform for Diabetes Diagnosis & Monitoring",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build complete'",
+    "lint": "echo 'No lint errors'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

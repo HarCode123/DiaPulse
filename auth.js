@@ -16,8 +16,8 @@ function login() {
     // Demo authentication (hackathon-safe)
     localStorage.setItem("loggedInUser", user);
     localStorage.setItem("userRole", role);
-    const url = 'patient_index.html?username=' + encodeURIComponent(user) + 'role=' + encodeURIComponent(role);
-    const url2 = 'doctor.html?username=' + encodeURIComponent(user) + 'role=' + encodeURIComponent(role);
+    const url = 'patient_index.html?username=' + encodeURIComponent(user) + '&role=' + encodeURIComponent(role);
+    const url2 = 'doctor.html?username=' + encodeURIComponent(user) + '&role=' + encodeURIComponent(role);
     if(role=="doctor")
     {
         window.location.href = url2;
@@ -31,5 +31,5 @@ function login() {
     }
 function logout() {
     localStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }

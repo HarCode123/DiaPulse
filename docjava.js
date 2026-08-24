@@ -2,41 +2,69 @@ window.onload = function () {
     const tableBody = document.getElementById("patientTable");
     const savedProfile = localStorage.getItem("patientProfile");
 
-    if (!savedProfile) {
-        tableBody.innerHTML =
-            `<tr><td colspan="6">No patient records available</td></tr>`;
-        return;
+    let patient = {
+        name: "Anita Sharma",
+        age: 45,
+        gender: "Female",
+        bloodGroup: "O+",
+        diabetesType: "Type 2"
+    };
+
+    if (savedProfile) {
+        try {
+            patient = JSON.parse(savedProfile);
+        } catch (e) {
+            console.error(e);
+        }
     }
 
-    const patient = JSON.parse(savedProfile);
+    tableBody.innerHTML = "";
+    const demoPatients = [
+        patient,
+        {
+            name: "Ravi Kumar",
+            age: 52,
+            gender: "Male",
+            bloodGroup: "B+",
+            diabetesType: "Type 2"
+        }
+    ];
 
-    for (let i = 0; i < 2; i++) {
+    demoPatients.forEach(p => {
         const row = document.createElement("tr");
-
         row.innerHTML = `
-            <td>${patient.name}</td>
-            <td>${patient.age}</td>
-            <td>${patient.gender}</td>
-            <td>${patient.bloodGroup}</td>
-            <td>${patient.diabetesType}</td>
+            <td>${p.name}</td>
+            <td>${p.age}</td>
+            <td>${p.gender}</td>
+            <td>${p.bloodGroup}</td>
+            <td>${p.diabetesType}</td>
             <td>
-                <a href="index.html">Upload / View</a>
+                <a href="patient_index.html" class="upload-link">Upload / View</a>
             </td>
         `;
-
         tableBody.appendChild(row);
-    }
+    });
 };
+
 function showDoctorProfile() {
-    document.getElementById("patientListSection").classList.add("hidden");
+    const profileSec = document.getElementById("doctorProfileSection");
+    const listSec = document.getElementById("patientListSection");
+    const assignedSec = document.getElementById("assignedPatientsSection");
+
+    if (profileSec) profileSec.classList.remove("hidden");
+    if (listSec) listSec.classList.add("hidden");
+    if (assignedSec) assignedSec.classList.remove("hidden");
 }
 
 function showPatientList() {
-    document.getElementById("patientListSection").classList.remove("hidden");
+    const listSec = document.getElementById("patientListSection");
+    if (listSec) listSec.classList.remove("hidden");
     loadRandomPatients();
 }
+
 function loadRandomPatients() {
     const tableBody = document.getElementById("patientListTable");
+    if (!tableBody) return;
     tableBody.innerHTML = "";
 
     const patients = [
@@ -70,11 +98,7 @@ function loadRandomPatients() {
         }
     ];
 
-    // Pick any 2 random patients
-    const shuffled = patients.sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 2);
-
-    selected.forEach(patient => {
+    patients.forEach(patient => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${patient.name}</td>
@@ -83,7 +107,7 @@ function loadRandomPatients() {
             <td>${patient.bloodGroup}</td>
             <td>${patient.diabetesType}</td>
             <td>
-                <a href="index.html">View / Upload</a>
+                <a href="patient_index.html" class="upload-link">View / Upload</a>
             </td>
         `;
         tableBody.appendChild(row);

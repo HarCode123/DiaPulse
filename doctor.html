@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Doctor Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - DiaPulse</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="design.css">
 </head>
 
 <body>
@@ -11,65 +13,86 @@
 <header>
     <h1>DiaPulse</h1>
     <p>Diabetes Monitoring Portal & AI Clinical Decision Support System</p>
+    <div id="doctorWelcome" style="margin-top: 10px; font-weight: 500; font-size: 15px;"></div>
 </header>
 
 <nav>
     <button onclick="showDoctorProfile()">Doctor Profile</button>
     <button onclick="showPatientList()">Patient List</button>
+    <button onclick="logout()">Logout</button>
 </nav>
 
+<div class="main-content doctor-page">
+    <!-- Doctor Profile Card -->
+    <section id="doctorProfileSection" class="card">
+        <h2>Doctor Profile</h2>
+        <div class="form-grid">
+            <input value="Dr. Rajesh Kumar" disabled>
+            <input value="Endocrinologist" disabled>
+            <input value="Diabetes Specialist" disabled>
+        </div>
+    </section>
 
-<!-- Doctor Profile Card -->
-<section class="card">
-    <h2>Doctor Profile</h2>
+    <!-- Patient List Section -->
+    <section id="patientListSection" class="card hidden">
+        <h2>Patient Directory</h2>
 
-    <input value="Dr. Rajesh Kumar" disabled>
-    <input value="Endocrinologist" disabled>
-    <input value="Diabetes Specialist" disabled>
-</section>
-<!-- Patient List Section -->
-<section id="patientListSection" class="card hidden">
-    <h2>Patient List</h2>
+        <div class="table-responsive">
+            <table class="doctor-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Blood Group</th>
+                        <th>Diabetes Type</th>
+                        <th>Reports</th>
+                    </tr>
+                </thead>
+                <tbody id="patientListTable">
+                    <!-- JS inserts rows -->
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-    <table class="doctor-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Blood Group</th>
-                <th>Diabetes Type</th>
-                <th>Reports</th>
-            </tr>
-        </thead>
-        <tbody id="patientListTable">
-            <!-- JS inserts rows -->
-        </tbody>
-    </table>
-</section>
+    <!-- Assigned Patients Table Card -->
+    <section id="assignedPatientsSection" class="card">
+        <h2>Assigned Patients</h2>
 
-<!-- Patient Table Card -->
-<section class="card">
-    <h2>Assigned Patients</h2>
+        <div class="table-responsive">
+            <table class="doctor-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Blood Group</th>
+                        <th>Diabetes Type</th>
+                        <th>Reports</th>
+                    </tr>
+                </thead>
 
-    <table class="doctor-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Blood Group</th>
-                <th>Diabetes Type</th>
-                <th>Reports</th>
-            </tr>
-        </thead>
+                <tbody id="patientTable">
+                    <!-- JS inserts rows -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
 
-        <tbody id="patientTable">
-            <!-- JS inserts rows -->
-        </tbody>
-    </table>
-</section>
+<footer>
+    <p>⚕️ Clinical decision support only. Consult physician for treatment.</p>
+</footer>
 
+<script src="auth.js"></script>
 <script src="docjava.js"></script>
+<script>
+    const user = localStorage.getItem("loggedInUser") || "Dr. Rajesh Kumar";
+    const doctorWelcomeEl = document.getElementById("doctorWelcome");
+    if (doctorWelcomeEl) {
+        doctorWelcomeEl.innerText = `Welcome Doctor: ${user}`;
+    }
+</script>
 </body>
 </html>

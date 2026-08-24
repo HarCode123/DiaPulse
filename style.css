@@ -1,9 +1,22 @@
+/* ===== RESET & BOX MODEL ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* ===== GLOBAL ===== */
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     background: linear-gradient(135deg, #f4f1fb, #efe9fb);
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: #333;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
 }
 
 /* ===== HEADER ===== */
@@ -12,16 +25,19 @@ header {
     color: white;
     padding: 30px 20px;
     text-align: center;
+    width: 100%;
 }
 
 header h1 {
     margin: 0;
     font-size: 28px;
     font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 header p {
     margin-top: 8px;
+    margin-bottom: 0;
     font-size: 14px;
     opacity: 0.9;
 }
@@ -29,14 +45,17 @@ header p {
 /* ===== NAV ===== */
 nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
     background: #ffffff;
-    padding: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 14px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
 }
 
 nav button {
-    margin: 0 8px;
+    margin: 0;
     padding: 10px 22px;
     border: none;
     background: #7b5cff;
@@ -44,7 +63,9 @@ nav button {
     cursor: pointer;
     border-radius: 25px;
     font-size: 14px;
+    font-weight: 500;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 nav button:hover {
@@ -52,18 +73,53 @@ nav button:hover {
     transform: translateY(-1px);
 }
 
+/* ===== MAIN CONTAINER / SECTIONS ===== */
+.main-content {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
 /* ===== CARDS ===== */
 .card {
     background: #ffffff;
-    margin: 30px auto;
-    padding: 25px;
-    width: 80%;
+    margin: 24px auto;
+    padding: 28px;
+    width: 100%;
     max-width: 900px;
     border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(123,92,255,0.12);
+    box-shadow: 0 12px 30px rgba(123, 92, 255, 0.12);
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
-/* ===== FORM ELEMENTS ===== */
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #7b5cff;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.card h3 {
+    margin-top: 24px;
+    margin-bottom: 14px;
+    color: #333;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* ===== FORM ELEMENTS & GRIDS ===== */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
 input, select {
     display: block;
     width: 100%;
@@ -72,7 +128,10 @@ input, select {
     border-radius: 12px;
     border: 1px solid #ddd;
     font-size: 14px;
-    transition: border 0.3s;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus, select:focus {
@@ -80,51 +139,137 @@ input:focus, select:focus {
     border-color: #7b5cff;
 }
 
+input[type="file"] {
+    padding: 10px;
+    background: #fdfdfd;
+    cursor: pointer;
+}
+
 /* ===== BUTTONS INSIDE SECTIONS ===== */
-section button {
-    margin-top: 10px;
-    padding: 12px 20px;
+section button,
+.card button {
+    display: inline-block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    padding: 12px 24px;
     background: #7b5cff;
     color: white;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
-section button:hover {
+section button:hover,
+.card button:hover {
     background: #6248d9;
     transform: translateY(-1px);
 }
 
-/* ===== STATUS BOXES ===== */
+/* ===== STATUS & METRIC CARDS ===== */
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+    width: 100%;
+}
+
 .status {
-    padding: 14px 18px;
+    padding: 16px 20px;
     margin: 12px 0;
     border-radius: 15px;
     background: #f3efff;
     border-left: 5px solid #7b5cff;
     font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
 }
 
-/* ===== CHART ===== */
+.status strong {
+    color: #4b3cc4;
+}
+
+#ocrStatus {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* ===== CHART CONTAINER ===== */
+.chart-container {
+    position: relative;
+    width: 100%;
+    margin-top: 24px;
+    min-height: 280px;
+    overflow: hidden;
+}
+
 canvas {
-    margin-top: 20px;
+    width: 100% !important;
+    max-width: 100%;
+    margin-top: 10px;
 }
 
-/* ===== HIDDEN ===== */
+/* ===== TABLE CONTAINER & RESPONSIVENESS ===== */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 16px;
+    border-radius: 12px;
+}
+
+/* ===== HIDDEN UTILITY ===== */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* ===== FOOTER ===== */
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 16px 20px;
     background: #ffffff;
     font-size: 13px;
     color: #555;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: auto;
+    width: 100%;
 }
 
+footer p {
+    margin: 0;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 24px 16px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav {
+        padding: 10px 12px;
+    }
+
+    nav button {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .card {
+        padding: 20px;
+        margin: 16px auto;
+        border-radius: 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}

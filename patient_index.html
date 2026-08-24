@@ -2,84 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Integrated Diabetes Monitoring Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiaPulse - Integrated Diabetes Monitoring Platform</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
-
 </head>
 <body>
 
 <header>
     <h1>DiaPulse</h1>
     <p>Diabetes Monitoring Portal & AI Clinical Decision Support System</p>
+    <div id="welcome" style="margin-top: 10px; font-weight: 500; font-size: 15px;"></div>
 </header>
 
 <nav>
     <button onclick="showSection('profile')">Patient Profile</button>
     <button onclick="showSection('upload')">Upload Reports</button>
     <button onclick="showSection('analysis')">AI Analysis</button>
+    <button onclick="logout()">Logout</button>
 </nav>
 
-<section id="profile" class="card">
-     <h2>Patient Profile</h2>
-    <input placeholder="Name">
-    <input placeholder="Age" type="number">
-    <select>
-        <option>Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-    </select>
-    <input placeholder="Blood Group">
-    <input placeholder="Diabetes Type">
-</section>
+<div class="main-content">
+    <section id="profile" class="card">
+        <h2>Patient Profile</h2>
+        <div class="form-grid">
+            <input id="patientName" placeholder="Full Name">
+            <input id="patientAge" placeholder="Age" type="number">
+            <select id="patientGender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <input id="patientBloodGroup" placeholder="Blood Group (e.g. O+, A+)">
+            <input id="patientDiabetesType" placeholder="Diabetes Type (e.g. Type 2)">
+        </div>
+        <button onclick="savePatientProfile()">Save Profile</button>
+    </section>
 
+    <section id="upload" class="card hidden">
+        <h2>Upload Lab Report</h2>
 
-<section id="upload" class="card hidden">
-    <h2>Upload Lab Report</h2>
+        <input type="file" id="reportUpload" accept="image/*,.pdf">
+        <button onclick="runOCR()">Extract Values (OCR)</button>
 
-    <input type="file" id="reportUpload" accept="image/*,.pdf">
-    <button onclick="runOCR()">Extract Values (OCR)</button>
+        <p id="ocrStatus"></p>
 
-    <p id="ocrStatus"></p>
+        <h3>Extracted / Manual Entry</h3>
+        <div class="form-grid">
+            <input id="fasting" placeholder="Fasting Glucose (mg/dL)">
+            <input id="ppbg" placeholder="Post-Prandial (mg/dL)">
+            <input id="hba1c" placeholder="HbA1c (%)">
+        </div>
 
-    <h3>Extracted / Manual Entry</h3>
-    <input id="fasting" placeholder="Fasting Glucose (mg/dL)">
-    <input id="ppbg" placeholder="Post-Prandial (mg/dL)">
-    <input id="hba1c" placeholder="HbA1c (%)">
+        <button onclick="analyzeData()">Analyze Data</button>
+    </section>
 
-    <button onclick="analyzeData()">Analyze</button>
-</section>
+    <section id="analysis" class="card hidden">
+        <h2>AI Diagnosis & Decision</h2>
 
+        <div class="status-grid">
+            <div id="diagnosis" class="status"><strong>Diagnosis:</strong> Awaiting analysis</div>
+            <div id="riskScore" class="status"><strong>Risk Score:</strong> --/100</div>
+            <div id="decision" class="status"><strong>AI Decision:</strong> Enter readings to evaluate</div>
+        </div>
 
-<section id="analysis" class="card hidden">
-    <h2>AI Diagnosis & Decision</h2>
-
-    <div id="diagnosis" class="status"></div>
-    <div id="riskScore" class="status"></div>
-    <div id="decision" class="status"></div>
-
-    <canvas id="trendChart"></canvas>
-</section>
+        <div class="chart-container">
+            <canvas id="trendChart"></canvas>
+        </div>
+    </section>
+</div>
 
 <footer>
     <p>⚕️ Clinical decision support only. Consult physician for treatment.</p>
 </footer>
 
+<script src="auth.js"></script>
 <script src="script.js"></script>
 <script>
-    const role = localStorage.getItem("userRole");
-    const user = localStorage.getItem("loggedInUser");
+    const role = localStorage.getItem("userRole") || "patient";
+    const user = localStorage.getItem("loggedInUser") || "User";
 
-    document.getElementById("welcome").innerText =
-        `Welcome ${role.toUpperCase()} : ${user}`;
-
-    if (role === "doctor") {
-        document.getElementById("doctorPanel").classList.remove("hidden");
-    }
-
-    if (role === "patient") {
-        document.getElementById("patientPanel").classList.remove("hidden");
+    const welcomeEl = document.getElementById("welcome");
+    if (welcomeEl) {
+        welcomeEl.innerText = `Welcome ${role.toUpperCase()} : ${user}`;
     }
 </script>
 

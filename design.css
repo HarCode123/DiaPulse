@@ -1,28 +1,43 @@
+/* ===== RESET & BOX MODEL ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* ===== LOGIN PAGE BASE ===== */
 body.centered {
     font-family: "Segoe UI", Arial, sans-serif;
     background: linear-gradient(135deg, #f4f1fb, #efe9fb);
     margin: 0;
-    height: 100vh;
+    padding: 20px;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
 /* ===== LOGIN CARD ===== */
 .login-box {
     background: #ffffff;
-    width: 360px;
-    padding: 30px 28px;
+    width: 100%;
+    max-width: 380px;
+    padding: 36px 30px;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(123, 92, 255, 0.15);
     text-align: center;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    margin: auto;
 }
 
 /* ===== TITLE ===== */
 .login-box h2 {
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 24px;
     color: #7b5cff;
+    font-size: 24px;
     font-weight: 600;
 }
 
@@ -35,7 +50,10 @@ body.centered {
     border-radius: 12px;
     border: 1px solid #ddd;
     font-size: 14px;
-    transition: border 0.3s ease;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: #333;
+    transition: border-color 0.3s ease;
 }
 
 .login-box input:focus,
@@ -47,7 +65,7 @@ body.centered {
 /* ===== LOGIN BUTTON ===== */
 .login-box button {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 18px;
     padding: 12px;
     background: #7b5cff;
     color: white;
@@ -55,6 +73,7 @@ body.centered {
     border-radius: 25px;
     cursor: pointer;
     font-size: 15px;
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
@@ -65,24 +84,25 @@ body.centered {
 
 /* ===== ERROR MESSAGE ===== */
 #loginError {
-    margin-top: 12px;
+    margin-top: 14px;
+    margin-bottom: 0;
     font-size: 13px;
     color: red;
-}
-body.centered {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f4f1fb, #efe9fb);
-    margin: 0;
-    padding: 40px;
+    font-weight: 500;
+    min-height: 18px;
 }
 
+/* ===== DOCTOR BOX ===== */
 .doctor-box {
     background: white;
     padding: 30px;
+    width: 100%;
     max-width: 1000px;
-    margin: auto;
+    margin: 20px auto;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(123, 92, 255, 0.15);
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .doctor-box h2 {
@@ -96,6 +116,7 @@ body.centered {
     margin-bottom: 25px;
 }
 
+/* ===== BASE TABLE STYLES ===== */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -108,10 +129,11 @@ thead {
 }
 
 th, td {
-    padding: 12px;
+    padding: 12px 14px;
     text-align: center;
     border-bottom: 1px solid #eee;
     font-size: 14px;
+    vertical-align: middle;
 }
 
 tr:hover {
@@ -122,21 +144,25 @@ tr:hover {
     text-decoration: none;
     background: #7b5cff;
     color: white;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 15px;
     font-size: 13px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .upload-link:hover {
     background: #6248d9;
 }
 
-/* ===== DOCTOR TABLE ===== */
+/* ===== DOCTOR TABLE & RESPONSIVENESS ===== */
 .doctor-table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
-    font-size: 15px;
+    font-size: 14px;
+    border: 2px solid #7b5cff;
 }
 
 .doctor-table thead {
@@ -146,101 +172,58 @@ tr:hover {
 
 .doctor-table th,
 .doctor-table td {
-    padding: 16px 12px;
+    padding: 14px 12px;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border: 1px solid #dcd6ff;
+}
+
+.doctor-table thead th {
+    border-bottom: 2px solid #7b5cff;
+    font-weight: 600;
 }
 
 .doctor-table tr:hover {
     background: #f6f4ff;
 }
 
+.doctor-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
 .doctor-table a {
     background: #7b5cff;
     color: white;
-    padding: 8px 16px;
+    padding: 6px 14px;
     border-radius: 20px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .doctor-table a:hover {
     background: #6248d9;
 }
 
-/* ===== PATIENT TABLE SIZE FIX (SAFE OVERRIDE) ===== */
-.doctor-table {
-    width: 100%;
-    table-layout: fixed; /* forces proper column sizing */
-}
-
-/* Column width distribution */
-.doctor-table th:nth-child(1),
-.doctor-table td:nth-child(1) {
-    width: 20%; /* Name */
-}
-
-.doctor-table th:nth-child(2),
-.doctor-table td:nth-child(2) {
-    width: 8%; /* Age */
-}
-
-.doctor-table th:nth-child(3),
-.doctor-table td:nth-child(3) {
-    width: 12%; /* Gender */
-}
-
-.doctor-table th:nth-child(4),
-.doctor-table td:nth-child(4) {
-    width: 15%; /* Blood Group */
-}
-
-.doctor-table th:nth-child(5),
-.doctor-table td:nth-child(5) {
-    width: 20%; /* Diabetes Type */
-}
-
-.doctor-table th:nth-child(6),
-.doctor-table td:nth-child(6) {
-    width: 15%; /* Reports */
-}
-
-/* Prevent text overflow issues */
-.doctor-table th,
-.doctor-table td {
-    white-space: nowrap;
-}
-/* ===== FIX FLEX SHRINK ISSUE FOR DOCTOR PAGE ===== */
 .doctor-page {
     width: 100%;
-    max-width: 1200px; /* allows wide table */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Ensure table can expand fully */
-.doctor-page .doctor-table {
-    width: 100%;
-    table-layout: auto; /* override flex shrink */
-}
+@media (max-width: 768px) {
+    .login-box {
+        padding: 26px 20px;
+    }
 
-/* Allow text to breathe */
-.doctor-page th,
-.doctor-page td {
-    white-space: normal;
-}
-/* ===== TABLE GRID LINES FOR BETTER READABILITY ===== */
-.doctor-table {
-    border: 2px solid #7b5cff;
-}
+    .doctor-box {
+        padding: 20px;
+    }
 
-.doctor-table th,
-.doctor-table td {
-    border: 1px solid #dcd6ff;
-}
-
-.doctor-table thead th {
-    border-bottom: 2px solid #7b5cff;
-}
-
-.doctor-table tbody tr:last-child td {
-    border-bottom: 0;
+    .doctor-table th,
+    .doctor-table td {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
 }
